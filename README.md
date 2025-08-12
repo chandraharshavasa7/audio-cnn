@@ -1,93 +1,138 @@
-# Audio CNN
 
-![alt text](thumbnail.png)
+# Audio-CNN
 
-[Link to video](https://youtu.be/KLYfwigQPuY)
+This repository contains a Convolutional Neural Network (CNN) implementation for audio classification tasks. The model processes audio data to classify different sound categories.
 
-[Discord and more](https://www.andreastrolle.com/)
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Dataset](#dataset)
+- [Model Architecture](#model-architecture)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 
-Hi 🤙 In this video, you'll learn to train and deploy an audio classification CNN from scratch with PyTorch. I'll cover all the required concepts, so no prior experience is needed. The model will classify sounds like a dog barking or birds chirping from an audio file. You'll work with advanced techniques like Residual Networks (ResNet), data mixing, and Mel Spectrograms to build a robust training pipeline. Afterwards, we'll build a dashboard using Next.js and React to upload audio and visualize the model's internal layers to see what it "sees". The project uses Python, PyTorch, Next.js, React, and Tailwind, based on the T3 Stack. You can build along with me from start to finish. All services used are 100% free for you to use.
+Audio classification is a key problem in many applications like speech recognition, music genre classification, environmental sound detection, etc. This project uses a CNN to extract features from audio signals and classify them into different categories.
 
-## Features:
+## Features
 
-- 🧠 Deep Audio CNN for sound classification
-- 🧱 ResNet-style architecture with residual blocks
-- 🎼 Mel Spectrogram audio-to-image conversion
-- 🎛️ Data augmentation with Mixup & Time/Frequency Masking
-- ⚡ Serverless GPU inference with Modal
-- 📊 Interactive Next.js & React dashboard
-- 👁️ Visualization of internal CNN feature maps
-- 📈 Real-time audio classification with confidence scores
-- 🌊 Waveform and Spectrogram visualization
-- 🚀 FastAPI inference endpoint
-- ⚙️ Optimized training with AdamW & OneCycleLR scheduler
-- 📈 TensorBoard integration for training analysis
-- 🛡️ Batch Normalization for stable & fast training
-- 🎨 Modern UI with Tailwind CSS & Shadcn UI
-- ✅ Pydantic data validation for robust API requests
+- Preprocessing of audio data into spectrogram or mel-spectrogram inputs.
+- CNN model architecture tailored for audio classification.
+- Training and evaluation scripts.
+- Support for common audio formats.
 
-## Setup
+## Installation
 
-Follow these steps to install and set up the project.
-
-### Clone the Repository
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/Andreaswt/audio-cnn.git
-```
-
-### Install Python
-
-Download and install Python if not already installed. Use the link below for guidance on installation:
-[Python Download](https://www.python.org/downloads/)
-
-Create a virtual environment with **Python 3.12**.
-
-### Backend
-
-Navigate to folder:
-
-```bash
+git clone https://github.com/your-username/audio-cnn.git
 cd audio-cnn
+````
+
+2. Create a Python virtual environment and activate it (optional but recommended):
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 ```
 
-Install dependencies:
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Modal setup:
+*If there is no requirements.txt file, install the common packages:*
 
 ```bash
-modal setup
+pip install numpy librosa matplotlib tensorflow keras
 ```
 
-Run on Modal:
+## Usage
+
+### Prepare the dataset
+
+Place your audio dataset in a folder structure expected by the scripts. Typically:
+
+```
+dataset/
+├── class1/
+│   ├── audio1.wav
+│   ├── audio2.wav
+│   └── ...
+├── class2/
+│   ├── audio1.wav
+│   └── ...
+└── ...
+```
+
+### Train the model
+
+Run the training script:
 
 ```bash
-modal run main.py
+python train.py
 ```
 
-Deploy backend:
+*(Replace with the actual training script name in the repo)*
+
+### Evaluate the model
+
+Run the evaluation script:
 
 ```bash
-modal deploy main.py
+python evaluate.py
 ```
 
-### Frontend
+## Dataset
 
-Install dependencies:
+Describe the dataset you used or recommend datasets such as:
 
-```bash
-cd audio-cnn-visualisation
-npm i
-```
+* UrbanSound8K
+* ESC-50
+* GTZAN (for music genre classification)
 
-Run:
+## Model Architecture
 
-```bash
-npm run dev
-```
+The CNN model typically consists of convolutional layers to extract spatial features from spectrogram images, followed by fully connected layers for classification.
+
+*Example:*
+
+* Conv2D layers with ReLU activation
+* MaxPooling layers
+* Dropout for regularization
+* Dense layers for output
+
+## Training
+
+* Use categorical cross-entropy loss for multi-class classification.
+* Optimizer: Adam or SGD
+* Metrics: Accuracy
+
+Adjust hyperparameters like learning rate, batch size, and number of epochs in the training script.
+
+## Evaluation
+
+* Evaluate the model on the test dataset.
+* Metrics include accuracy, precision, recall, and confusion matrix.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## License
+
+Specify the license if available. For example:
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
